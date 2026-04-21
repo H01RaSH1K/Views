@@ -4,6 +4,12 @@
 
 \## 0.3.0
 
+\- UnityObjectView changed to SerializedTargetView
+
+
+
+\## 0.3.0
+
 \- Namespace added
 
 

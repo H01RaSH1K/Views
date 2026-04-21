@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace View
 {
-    public abstract class UnityObjectView<T> : View<T> where T : Object
+    public abstract class SerializedTargetView<T> : View<T> where T : class
     {
         [SerializeField] private T _serializedTarget;
 
@@ -13,6 +13,9 @@ namespace View
 
         protected virtual void OnValidate()
         {
+            if (ReferenceEquals(Target, _serializedTarget))
+                return;
+
             AttachTo(_serializedTarget);
         }
 
@@ -23,7 +26,7 @@ namespace View
 
         protected override void OnDetaching()
         {
-            _serializedTarget = Target;
+            _serializedTarget = null;
         }
     }
 }
