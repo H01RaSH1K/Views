@@ -1,38 +1,41 @@
 using UnityEngine;
 
-public abstract class View<T> : MonoBehaviour where T : class
+namespace View
 {
-    public T Target { get; private set; }
-
-    private void OnDisable()
+    public abstract class View<T> : MonoBehaviour where T : class
     {
-        Detach();
-    }
+        public T Target { get; private set; }
 
-    public void AttachTo(T target)
-    {
-        if (Target != null)
+        private void OnDisable()
+        {
             Detach();
+        }
 
-        Target = target;
-        OnAttached();
+        public void AttachTo(T target)
+        {
+            if (Target != null)
+                Detach();
+
+            Target = target;
+            OnAttached();
+        }
+
+        public void Detach()
+        {
+            if (Target == null)
+                return;
+
+            OnDetaching();
+            Target = null;
+        }
+
+        public void DetachFrom(T target)
+        {
+            if (target == Target)
+                Detach();
+        }
+
+        protected abstract void OnAttached();
+        protected abstract void OnDetaching();
     }
-
-    public void Detach()
-    {
-        if (Target == null)
-            return;
-
-        OnDetaching();
-        Target = null;
-    }
-
-    public void DetachFrom(T target)
-    {
-        if (target == Target)
-            Detach();
-    }
-
-    protected abstract void OnAttached();
-    protected abstract void OnDetaching();
 }

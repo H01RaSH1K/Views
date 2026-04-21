@@ -2,6 +2,12 @@
 
 
 
+\## 0.3.0
+
+\- Namespace added
+
+
+
 \## 0.2.0
 
 \- MonoBehaviourView changed to UnityObjectView

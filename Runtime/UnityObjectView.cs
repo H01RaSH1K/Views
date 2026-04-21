@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public abstract class UnityObjectView<T> : View<T> where T : Object
+namespace View
 {
-    [SerializeField] private T _serializedTarget;
-
-    protected virtual void Awake()
+    public abstract class UnityObjectView<T> : View<T> where T : Object
     {
-        AttachTo(_serializedTarget);
-    }
+        [SerializeField] private T _serializedTarget;
 
-    protected virtual void OnValidate()
-    {
-        AttachTo(_serializedTarget);
-    }
+        protected virtual void Awake()
+        {
+            AttachTo(_serializedTarget);
+        }
 
-    protected override void OnAttached()
-    {
-        _serializedTarget = Target;
-    }
+        protected virtual void OnValidate()
+        {
+            AttachTo(_serializedTarget);
+        }
 
-    protected override void OnDetaching()
-    {
-        _serializedTarget = Target;
+        protected override void OnAttached()
+        {
+            _serializedTarget = Target;
+        }
+
+        protected override void OnDetaching()
+        {
+            _serializedTarget = Target;
+        }
     }
 }
