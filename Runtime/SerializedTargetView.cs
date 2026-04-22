@@ -4,29 +4,11 @@ namespace View
 {
     public abstract class SerializedTargetView<T> : View<T> where T : class
     {
-        [SerializeField] private T _serializedTarget;
+        [SerializeField] private T _startTarget;
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
-            AttachTo(_serializedTarget);
-        }
-
-        protected virtual void OnValidate()
-        {
-            if (ReferenceEquals(Target, _serializedTarget))
-                return;
-
-            AttachTo(_serializedTarget);
-        }
-
-        protected override void OnAttached()
-        {
-            _serializedTarget = Target;
-        }
-
-        protected override void OnDetaching()
-        {
-            _serializedTarget = null;
+            AttachTo(_startTarget);
         }
     }
 }
