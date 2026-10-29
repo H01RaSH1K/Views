@@ -6,7 +6,7 @@ namespace Anhertis.Views
     {
         public T Target { get; private set; }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Detach();
         }

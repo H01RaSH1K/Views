@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.7.0
+\- OnDisable is protected virtual, inheritors must call base.OnDisable()
+
 \## 0.6.1
 \- OnAttached and OnDetaching are virtual instead of abstract
 
