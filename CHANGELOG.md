@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.6.1
+\- OnAttached and OnDetaching are virtual instead of abstract
+
 \## 0.6.0
 \- Namespace changed to Anhertis.Views, package renamed to Views
 

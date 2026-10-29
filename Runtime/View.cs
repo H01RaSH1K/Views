@@ -35,7 +35,12 @@ namespace Anhertis.Views
                 Detach();
         }
 
-        protected abstract void OnAttached();
-        protected abstract void OnDetaching();
+        protected virtual void OnAttached()
+        {
+        }
+
+        protected virtual void OnDetaching()
+        {
+        }
     }
 }
