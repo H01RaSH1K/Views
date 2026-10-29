@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace View
+namespace Anhertis.Views
 {
     public abstract class SerializedTargetView<T> : View<T> where T : class
     {

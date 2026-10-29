@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace View
+namespace Anhertis.Views
 {
     public abstract class View<T> : MonoBehaviour where T : class
     {

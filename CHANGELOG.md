@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.6.0
+\- Namespace changed to Anhertis.Views, package renamed to Views
+
 \## 0.5.0
 \- Removed sync logic from SerializedTargetView
 
