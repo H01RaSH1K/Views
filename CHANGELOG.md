@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.9.0
+\- OnAttached and OnDetaching renamed to OnBind and OnUnbind, each is called once per binding
+
 \## 0.8.0
 \- Target is kept while disabled, OnAttached and OnDetaching are called on enable and disable
 

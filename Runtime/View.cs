@@ -4,18 +4,18 @@ namespace Anhertis.Views
 {
     public abstract class View<T> : MonoBehaviour where T : class
     {
+        private bool _isBound;
+
         public T Target { get; private set; }
 
         protected virtual void OnEnable()
         {
-            if (Target != null)
-                OnAttached();
+            Bind();
         }
 
         protected virtual void OnDisable()
         {
-            if (Target != null)
-                OnDetaching();
+            Unbind();
         }
 
         public void AttachTo(T target)
@@ -24,17 +24,12 @@ namespace Anhertis.Views
             Target = target;
 
             if (isActiveAndEnabled)
-                OnAttached();
+                Bind();
         }
 
         public void Detach()
         {
-            if (Target == null)
-                return;
-
-            if (isActiveAndEnabled)
-                OnDetaching();
-
+            Unbind();
             Target = null;
         }
 
@@ -44,12 +39,30 @@ namespace Anhertis.Views
                 Detach();
         }
 
-        protected virtual void OnAttached()
+        protected virtual void OnBind()
         {
         }
 
-        protected virtual void OnDetaching()
+        protected virtual void OnUnbind()
         {
+        }
+
+        private void Bind()
+        {
+            if (_isBound || Target == null)
+                return;
+
+            _isBound = true;
+            OnBind();
+        }
+
+        private void Unbind()
+        {
+            if (_isBound == false)
+                return;
+
+            _isBound = false;
+            OnUnbind();
         }
     }
 }
