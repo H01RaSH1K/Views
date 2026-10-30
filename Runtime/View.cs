@@ -6,18 +6,25 @@ namespace Anhertis.Views
     {
         public T Target { get; private set; }
 
+        protected virtual void OnEnable()
+        {
+            if (Target != null)
+                OnAttached();
+        }
+
         protected virtual void OnDisable()
         {
-            Detach();
+            if (Target != null)
+                OnDetaching();
         }
 
         public void AttachTo(T target)
         {
-            if (Target != null)
-                Detach();
-
+            Detach();
             Target = target;
-            OnAttached();
+
+            if (isActiveAndEnabled)
+                OnAttached();
         }
 
         public void Detach()
@@ -25,7 +32,9 @@ namespace Anhertis.Views
             if (Target == null)
                 return;
 
-            OnDetaching();
+            if (isActiveAndEnabled)
+                OnDetaching();
+
             Target = null;
         }
 

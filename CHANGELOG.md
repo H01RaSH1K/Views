@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.8.0
+\- Target is kept while disabled, OnAttached and OnDetaching are called on enable and disable
+
 \## 0.7.0
 \- OnDisable is protected virtual, inheritors must call base.OnDisable()
 
