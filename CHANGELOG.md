@@ -1,5 +1,8 @@
 \# Changelog
 
+\## 0.9.1
+\- SerializedTargetView does not replace a target attached before Start
+
 \## 0.9.0
 \- OnAttached and OnDetaching renamed to OnBind and OnUnbind, each is called once per binding
 

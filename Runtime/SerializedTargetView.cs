@@ -8,7 +8,8 @@ namespace Anhertis.Views
 
         protected virtual void Start()
         {
-            AttachTo(_startTarget);
+            if (Target == null)
+                AttachTo(_startTarget);
         }
     }
 }
